@@ -1,6 +1,16 @@
 package com.devashish.myfirstlibrary
 
-class Calculate {
+import android.content.Context
+import androidx.lifecycle.MutableLiveData
+import com.devashish.myfirstlibrary.retorfit.Request
+import com.devashish.myfirstlibrary.viewmodel.TestViewModel
+import org.koin.core.component.KoinComponent
+import org.koin.core.component.inject
+
+class Calculate(private val context: Context) : KoinComponent {
+
+
+    private val testViewModel: TestViewModel by inject()
 
     companion object {
 
@@ -56,6 +66,11 @@ class Calculate {
             }
         }
 
+
+    }
+
+    fun test(name: String): MutableLiveData<String> {
+        return testViewModel.getData(Request(name))
     }
 
 }
