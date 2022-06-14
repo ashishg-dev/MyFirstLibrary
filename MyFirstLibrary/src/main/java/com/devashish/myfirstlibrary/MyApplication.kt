@@ -14,7 +14,8 @@ class MyApplication : Application() {
             androidLogger()
             modules(
                 listOf(
-                    networkModule
+                    networkModule,
+                    testModule
                 )
             )
         }
