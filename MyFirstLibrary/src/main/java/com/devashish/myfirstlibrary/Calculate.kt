@@ -1,16 +1,20 @@
 package com.devashish.myfirstlibrary
 
-import android.content.Context
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.ViewModelStoreOwner
 import com.devashish.myfirstlibrary.retorfit.Request
 import com.devashish.myfirstlibrary.viewmodel.TestViewModel
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
 
-class Calculate(private val context: Context) : KoinComponent {
+class Calculate(private val context: ViewModelStoreOwner) : KoinComponent {
 
+//    private val testViewModel by lazy {
+//        ViewModelProvider(context).get(TestViewModel::class.java)
+//    }
 
-    private val testViewModel: TestViewModel by inject()
+    private val viewModel: TestViewModel by inject()
 
     companion object {
 
@@ -69,8 +73,20 @@ class Calculate(private val context: Context) : KoinComponent {
 
     }
 
-    fun test(name: String): MutableLiveData<String> {
-        return testViewModel.getData(Request(name))
+//    fun test(name: String): MutableLiveData<String> {
+//        return testViewModel.getData(Request(name))
+//    }
+
+    fun test1(name: String): MutableLiveData<String> {
+        return viewModel.getData(Request(name))
     }
+
+    fun fact(): MutableLiveData<String> {
+        return viewModel.getFact()
+    }
+
+//    fun fact(): MutableLiveData<String> {
+//        return testViewModel.getFact()
+//    }
 
 }

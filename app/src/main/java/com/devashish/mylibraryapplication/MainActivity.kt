@@ -5,10 +5,11 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
+import androidx.lifecycle.ViewModelProvider
 import com.devashish.myfirstlibrary.Calculate
+import com.devashish.myfirstlibrary.viewmodel.TestViewModel
 
 class MainActivity : AppCompatActivity() {
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -48,6 +49,16 @@ class MainActivity : AppCompatActivity() {
                 number1.text.toString().toInt(),
                 number2.text.toString().toInt()
             ).toString()
+
+
+            Calculate(this).test1("Ashish").observe(this, {
+                textResult.text = it.toString()
+            })
+
+//            Calculate(this).fact().observe(this, {
+//                textResult.text = it.toString()
+//            })
+
         }
 
     }

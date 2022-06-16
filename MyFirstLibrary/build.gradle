@@ -9,8 +9,8 @@ android {
     defaultConfig {
         minSdkVersion 21
         targetSdkVersion 31
-        versionCode 2
-        versionName "1.0.1"
+        versionCode 3
+        versionName "1.2.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
@@ -59,18 +59,18 @@ dependencies {
     implementation 'com.squareup.okhttp3:okhttp:3.12.1'
     implementation 'com.squareup.okhttp3:logging-interceptor:3.7.0'
 
-    implementation "io.insert-koin:koin-core:$koin_version"
-    implementation "io.insert-koin:koin-android:$koin_version"
-    implementation "io.insert-koin:koin-android-compat:$koin_version"
+    api "io.insert-koin:koin-core:$koin_version"
+    api "io.insert-koin:koin-android:$koin_version"
+    api "io.insert-koin:koin-android-compat:$koin_version"
 // Java Compatibility
-    implementation "io.insert-koin:koin-android-compat:$koin_version"
+    api "io.insert-koin:koin-android-compat:$koin_version"
 // Jetpack WorkManager
-    implementation "io.insert-koin:koin-androidx-workmanager:$koin_version"
+    api "io.insert-koin:koin-androidx-workmanager:$koin_version"
 // Navigation Graph
-    implementation "io.insert-koin:koin-androidx-navigation:$koin_version"
+    api "io.insert-koin:koin-androidx-navigation:$koin_version"
 
     // Jetpack Compose
-    implementation "io.insert-koin:koin-androidx-compose:$koin_version"
+    api "io.insert-koin:koin-androidx-compose:$koin_version"
 
 
 }

@@ -10,6 +10,7 @@ import kotlinx.coroutines.launch
 import java.lang.Exception
 
 class TestViewModel(private val repository: TestRepository) : ViewModel() {
+
     var observer = MutableLiveData<String>()
 
     fun getData(request: Request): MutableLiveData<String> {
@@ -17,6 +18,20 @@ class TestViewModel(private val repository: TestRepository) : ViewModel() {
             try {
                 val response = repository.getData(request)
                 observer.postValue(response.name)
+            } catch (e: Exception) {
+                observer.postValue(e.message.toString())
+            }
+        }
+
+        return observer
+
+    }
+
+    fun getFact(): MutableLiveData<String> {
+        viewModelScope.launch(Dispatchers.IO) {
+            try {
+                val response = repository.getDataFact()
+                observer.postValue(response.fact)
             } catch (e: Exception) {
                 observer.postValue(e.message.toString())
             }
